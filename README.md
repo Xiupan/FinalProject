@@ -23,11 +23,35 @@
 
 ### Schema Layout
 * Users
+  - has one Empire
+  - has many Messages
+
 * Empires
+  - has many EmpireTraits
+  - has many Technologies
+  - has many Resources
+  - has many ShipDesigns
+  - has many Systems
+  - has many Fleets
+  - belongs to one User
+
 * EmpireTraits
+  - belongs to many Empires
+
 * Technologies
+  - belongs to many Empires
+
 * Resources
+  - belongs to many Empires
+
 * ShipDesigns
+  - belongs to an Empire
+
 * Colonies/Systems
+  - belongs to an Empire
+
 * Fleets
+  - belongs to an Empire
+
 * Messages
+  - belongs to a User
