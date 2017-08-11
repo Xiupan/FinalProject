@@ -1,5 +1,5 @@
 # Browser based, multiplayer, 4X space strategy game
-## Final project at Iron Yard Houston by Alan Hong
+## Alan Hong
 
 ### Ideas
 * Everything is time based, not turn-based
@@ -25,33 +25,73 @@
 * Users
   - has one Empire
   - has many Messages
+  - id, username, password_digest
 
 * Empires
-  - has many EmpireTraits
-  - has many Technologies
-  - has many Resources
+  - has_and_belongs_to_many :empiretraits
+  - has_and_belongs_to_many :technologies
+  - has_and_belongs_to_many :resources
   - has many ShipDesigns
   - has many Systems
   - has many Fleets
   - belongs to one User
+  - id, name, description, user_id
 
 * EmpireTraits
-  - belongs to many Empires
+  - has_and_belongs_to_many :empires
+  - id, name, description
+
+* Empires_EmpireTraits
+  - id, empire_id, empiretrait_id
 
 * Technologies
-  - belongs to many Empires
+  - has_and_belongs_to_many :empires
+  - has many Improvements
+  - has many ShipDesigns
+  - id, name, description, base_time
+
+* Empires_Technologies
+  - id, empire_id, technology_id
+
+* Improvements
+  - has_and_belongs_to_many :systems
+  - belongs to a Technology
+  - belongs to a Resource
+  - id, name, description, base_time, technology_id, resource_id
 
 * Resources
-  - belongs to many Empires
+  - has_and_belongs_to_many :empires
+  - has many Improvements
+  - has many ShipDesigns
+  - id, name, description
+
+* Empires_Resources
+  - id, empire_id, resource_id
 
 * ShipDesigns
   - belongs to an Empire
+  - belongs to a Technology
+  - belongs to a Resource
+  - has_and_belongs_to_many :fleets
+  - id, name, description, chassis, weapon1, weapon2, weapon3, bombs, armor, shields, engines, sensors, option1, option2, empire_id, fleet_id, technology_id, resource_id
 
-* Colonies/Systems
+* Systems
+  - has_and_belongs_to_many :improvements
   - belongs to an Empire
+  - id, name, explored(boolean), colonized(boolean), description, empire_id
+  - need to seed a bunch of systems initially?
+
+* Systems_Improvements
+  - id, system_id, improvement_id
 
 * Fleets
   - belongs to an Empire
+  - has_and_belongs_to_many :ShipDesigns
+  - id, name, empire_id
+
+* ShipDesigns_Fleets
+  - id, shipDesign_id, fleet_id
 
 * Messages
   - belongs to a User
+  - id, body, user_id
