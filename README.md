@@ -28,7 +28,7 @@
   - id, username, password_digest
 
 * Empires
-  - has_and_belongs_to_many :empiretraits
+  - has_and_belongs_to_many :empire_traits
   - has_and_belongs_to_many :technologies
   - has_and_belongs_to_many :resources
   - has many ShipDesigns
