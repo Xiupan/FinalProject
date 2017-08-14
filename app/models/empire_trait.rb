@@ -1,0 +1,2 @@
+class EmpireTrait < ApplicationRecord
+end

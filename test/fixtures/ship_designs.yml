@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  chassis: MyString
+  weapon1: MyString
+  weapon2: MyString
+  weapon3: MyString
+  bombs: MyString
+  armor: MyString
+  shields: MyString
+  engines: MyString
+  sensors: MyString
+  option1: MyString
+  option2: MyString
+  empire: one
+  fleet: one
+  technology: one
+  resource: one
+
+two:
+  name: MyString
+  description: MyText
+  chassis: MyString
+  weapon1: MyString
+  weapon2: MyString
+  weapon3: MyString
+  bombs: MyString
+  armor: MyString
+  shields: MyString
+  engines: MyString
+  sensors: MyString
+  option1: MyString
+  option2: MyString
+  empire: two
+  fleet: two
+  technology: two
+  resource: two
