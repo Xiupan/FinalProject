@@ -33,6 +33,7 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'pg_search'
 gem 'rails_admin'
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
