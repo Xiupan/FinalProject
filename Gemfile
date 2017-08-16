@@ -34,6 +34,7 @@ gem 'bootstrap-sass'
 gem 'pg_search'
 gem 'rails_admin'
 gem 'httparty'
+gem 'json'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
