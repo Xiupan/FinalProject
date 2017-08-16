@@ -7,3 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # https://eddb.io/archive/v5/systems_populated.json
+
+# $systemNameArray
+
+# FIXME: 
+# $systemNameArray.each do |name|
+#   System.find_or_create_by(name)
+# end
