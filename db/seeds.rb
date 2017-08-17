@@ -8,9 +8,12 @@
 
 # https://eddb.io/archive/v5/systems_populated.json
 
-# $systemNameArray
+require './app/models/system.rb'
 
-# FIXME: 
-# $systemNameArray.each do |name|
-#   System.find_or_create_by(name)
-# end
+# puts $systemNameArray
+
+# change 'required' attributes to 'not required' like 'Empires'
+$systemNameArray.each do |name|
+  # System.find_or_create_by(name: name)
+  System.where(name: name).first_or_create!
+end
