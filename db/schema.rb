@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814163807) do
+ActiveRecord::Schema.define(version: 20170817185150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,10 +119,10 @@ ActiveRecord::Schema.define(version: 20170814163807) do
 
   create_table "systems", force: :cascade do |t|
     t.string "name"
-    t.boolean "explored"
-    t.boolean "colonized"
+    t.boolean "explored", default: false
+    t.boolean "colonized", default: false
     t.text "description"
-    t.bigint "empire_id"
+    t.bigint "empire_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["empire_id"], name: "index_systems_on_empire_id"
