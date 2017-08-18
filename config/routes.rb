@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users
+
+  get 'sessions/new' => 'sessions#new', as: :login
+  post 'sessions/new' => 'sessions#create'
+  delete 'sessions' => 'sessions#destroy', as: :logout
 end
