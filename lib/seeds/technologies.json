@@ -1,0 +1,24 @@
+[
+  {
+    "military_tech": [
+      {
+        "id": 0,
+        "name": "N-Way Fusion",
+        "description": "Previously thought a practical impossibility, recent advances in shielding technology permit more than two bodies to be involved in a fusion reaction. This opens up the door to enormous leaps in energy generation.",
+        "tech_level": "Stage 1"
+      },
+      {
+        "id": 1,
+        "name": "Ubiquitous Surveillance",
+        "description": "Everyone's safer when nobody has any secrets, right? Every part of the world is awash with data capture devices from nano-cameras to eavesdropping files to chemical sniffers, not to mention digital trawlers.",
+        "tech_level": "Stage 1"
+      },
+      {
+        "id": 2,
+        "name": "Unstable Isotope Machining",
+        "description": "High nuclear mass materials that have been artificially created are not necessarily stable. The technology to contain and exploit them has many practical, if violent, applications.",
+        "tech_level": "Stage 2"
+      }
+    ]
+  }
+]
