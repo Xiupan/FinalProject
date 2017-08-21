@@ -35,6 +35,7 @@ gem 'pg_search'
 gem 'rails_admin'
 gem 'httparty'
 gem 'json'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
