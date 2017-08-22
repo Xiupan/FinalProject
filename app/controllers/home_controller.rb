@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-
-  end  
+    @empires = Empire.all
+  end
 end

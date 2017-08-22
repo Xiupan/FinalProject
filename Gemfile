@@ -36,6 +36,7 @@ gem 'rails_admin'
 gem 'httparty'
 gem 'json'
 gem 'faker'
+gem 'annotate'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
