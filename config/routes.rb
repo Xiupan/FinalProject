@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post 'associations/update/' => 'associations#updateEmpireToUser'
 
+  get 'summary/:id' => 'summaries#index'
+
   get 'sessions/new' => 'sessions#new', as: :login
   post 'sessions/new' => 'sessions#create'
   delete 'sessions' => 'sessions#destroy', as: :logout
