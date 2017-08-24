@@ -1,5 +1,6 @@
 <h1>Final Project Home</h1>
 
+<% @error_message %>
 <%= form_tag associations_update_path %>
   <div class="empire-dropdown">
     <%= collection_select :name, :id, Empire.all, :id, :name %>
