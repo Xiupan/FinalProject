@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'associations/update/' => 'associations#updateEmpireToUser'
 
   get 'summary/:id' => 'summaries#index', as: :summary_view
+  post 'summary/:id' => 'associations#updateEmpire', as: :update_empire
 
   get 'sessions/new' => 'sessions#new', as: :login
   post 'sessions/new' => 'sessions#create'

@@ -3,10 +3,23 @@
     <%= @empire.name %> Summary Screen
   </h1>
 </div>
+
 <div class="summary-totals">
   <h2>
     Treasury: <%= @empire.money %>
     Granary: <%= @empire.food %>
     Research: <%= @empire.science %>
   </h2>
+</div>
+
+<div class="debug-tools">
+  <%= form_tag update_empire_path do %>
+    <div><%= submit_tag 'Add 100 Money' %></div>
+    <div><%= submit_tag 'Add 100 Food' %></div>
+    <div><%= submit_tag 'Add 100 Science' %></div>
+  <% end %>
+</div>
+
+<h3>Explore a nearby system:</h3>
+<div class="explore-container">
 </div>

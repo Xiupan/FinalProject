@@ -16,6 +16,25 @@ class AssociationsController < ApplicationController
     end
   end
 
+  def updateEmpire
+    if params[:commit] == 'Add 100 Money'
+      @empire = Empire.find_by id: params[:id]
+      @empire.money += 100
+      @empire.save!
+      redirect_to summary_view_path(@empire.id)
+    elsif params[:commit] == 'Add 100 Food'
+      @empire = Empire.find_by id: params[:id]
+      @empire.food += 100
+      @empire.save!
+      redirect_to summary_view_path(@empire.id)
+    elsif params[:commit] == 'Add 100 Science'
+      @empire = Empire.find_by id: params[:id]
+      @empire.science += 100
+      @empire.save!
+      redirect_to summary_view_path(@empire.id)
+    end
+  end
+
   def destroy
 
   end
