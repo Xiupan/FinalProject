@@ -17,6 +17,7 @@ class AssociationsController < ApplicationController
   end
 
   def updateEmpire
+    $explorationMessage = ""
     if params[:commit] == 'Add 100 Money'
       @empire = Empire.find_by id: params[:id]
       @empire.money += 100
@@ -31,6 +32,14 @@ class AssociationsController < ApplicationController
       @empire = Empire.find_by id: params[:id]
       @empire.science += 100
       @empire.save!
+      redirect_to summary_view_path(@empire.id)
+    elsif params[:commit] == 'Explore'
+      @empire = Empire.find_by id: params[:id]
+      @unexploredSystemsArray = System.where(:explored => [false]).all
+      @randomSystem = @unexploredSystemsArray.sample
+      @randomSystem.explored = true
+      @randomSystem.save!
+      $explorationMessage = "Successfuly explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
       redirect_to summary_view_path(@empire.id)
     end
   end
