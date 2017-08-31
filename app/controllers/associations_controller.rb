@@ -41,6 +41,12 @@ class AssociationsController < ApplicationController
       @randomSystem.save!
       $explorationMessage = "Successfuly explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
       redirect_to summary_view_path(@empire.id)
+    elsif params[:commit] == 'Colonize'
+      @empire = Empire.find_by id: params[:id]
+      @systemToColonize = System.find_by id: params[:name][:id]
+      @systemToColonize.colonized = true
+      @systemToColonize.save!
+      redirect_to summary_view_path(@empire.id)
     end
   end
 
