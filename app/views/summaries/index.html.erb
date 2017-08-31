@@ -35,7 +35,7 @@
 <div class="colonize-container">
   <%= form_tag update_empire_path %>
     <div class="colonize-dropdown">
-      <%= collection_select :name, :id, System.where(:explored => [true]).all, :id, :name %>
+      <%= collection_select :name, :id, System.where(:explored => [true], :colonized => [false]).all, :id, :name %>
       <%= submit_tag 'Colonize' %>
     </div>
 </div>
