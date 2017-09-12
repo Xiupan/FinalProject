@@ -18,6 +18,7 @@ class AssociationsController < ApplicationController
 
   def updateEmpire
     $explorationMessage = nil
+    $colonizationMessage = nil
     if params[:commit] == 'Add 100 Money'
       @empire = Empire.find_by id: params[:id]
       @empire.money += 100
@@ -40,7 +41,7 @@ class AssociationsController < ApplicationController
       @randomSystem.explored = true
       @randomSystem.empire_id = @empire.id
       @randomSystem.save!
-      $explorationMessage = "Successfuly explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
+      $explorationMessage = "Successfully explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
       redirect_to summary_view_path(@empire.id)
     elsif params[:commit] == 'Colonize'
       @empire = Empire.find_by id: params[:id]
@@ -48,6 +49,7 @@ class AssociationsController < ApplicationController
       @systemToColonize.colonized = true
       @systemToColonize.empire_id = @empire.id
       @systemToColonize.save!
+      $colonizationMessage = "Successfully colonized #{@systemToColonize.name} / System ID: #{@systemToColonize.id}."
       redirect_to summary_view_path(@empire.id)
     end
   end

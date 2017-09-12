@@ -33,6 +33,9 @@
 
 <h3>Choose an explored system to colonize:</h3>
 <div class="colonize-container">
+  <% if $colonizationMessage != nil %>
+    <%= "*** #{$colonizationMessage} ***" %>
+  <% end %>
   <%= form_tag update_empire_path %>
     <div class="colonize-dropdown">
       <%= collection_select :name, :id, System.where(:explored => [true], :colonized => [false]).all, :id, :name %>
