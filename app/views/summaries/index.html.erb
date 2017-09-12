@@ -22,7 +22,7 @@
 
 <h3>Explore a nearby system:</h3>
 <div class="explore-container">
-  <% if $explorationMessage != "" %>
+  <% if $explorationMessage != nil %>
     <%= "*** #{$explorationMessage} ***" %>
   <% end %>
   <%= form_tag update_empire_path do %>

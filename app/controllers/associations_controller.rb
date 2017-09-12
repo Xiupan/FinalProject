@@ -17,7 +17,7 @@ class AssociationsController < ApplicationController
   end
 
   def updateEmpire
-    $explorationMessage = ""
+    $explorationMessage = nil
     if params[:commit] == 'Add 100 Money'
       @empire = Empire.find_by id: params[:id]
       @empire.money += 100
@@ -48,7 +48,6 @@ class AssociationsController < ApplicationController
       @systemToColonize.colonized = true
       @systemToColonize.empire_id = @empire.id
       @systemToColonize.save!
-      # $explorationMessage = ""
       redirect_to summary_view_path(@empire.id)
     end
   end
