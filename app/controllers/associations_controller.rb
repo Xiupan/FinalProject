@@ -48,6 +48,7 @@ class AssociationsController < ApplicationController
       @systemToColonize.colonized = true
       @systemToColonize.empire_id = @empire.id
       @systemToColonize.save!
+      # $explorationMessage = ""
       redirect_to summary_view_path(@empire.id)
     end
   end
