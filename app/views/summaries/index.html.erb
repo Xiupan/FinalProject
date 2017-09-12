@@ -38,7 +38,7 @@
   <% end %>
   <%= form_tag update_empire_path %>
     <div class="colonize-dropdown">
-      <%= collection_select :name, :id, System.where(:explored => [true], :colonized => [false]).all, :id, :name %>
+      <%= collection_select :system, :id, System.where(:explored => [true], :colonized => [false]).all, :id, :name %>
       <%= submit_tag 'Colonize' %>
     </div>
 </div>
@@ -50,7 +50,7 @@
   <% end %>
   <%= form_tag update_empire_path %>
     <div class="research-dropdown">
-      <%= collection_select :name, :id, Technology.all, :id, :name %>
+      <%= collection_select :technology, :id, Technology.all, :id, :nameWithCost %>
       <%= submit_tag 'Research' %>
     </div>
 </div>
