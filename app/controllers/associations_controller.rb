@@ -36,21 +36,35 @@ class AssociationsController < ApplicationController
       redirect_to summary_view_path(@empire.id)
     elsif params[:commit] == 'Explore'
       @empire = Empire.find_by id: params[:id]
-      @unexploredSystemsArray = System.where(:explored => [false]).all
-      @randomSystem = @unexploredSystemsArray.sample
-      @randomSystem.explored = true
-      @randomSystem.empire_id = @empire.id
-      @randomSystem.save!
-      $explorationMessage = "Successfully explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
-      redirect_to summary_view_path(@empire.id)
+      if @empire.money < 150
+        $explorationMessage = "Not enough monies. Exploration costs 150."
+        redirect_to summary_view_path(@empire.id)
+      else
+        @unexploredSystemsArray = System.where(:explored => [false]).all
+        @randomSystem = @unexploredSystemsArray.sample
+        @randomSystem.explored = true
+        @randomSystem.empire_id = @empire.id
+        @randomSystem.save!
+        @empire.money -= 150
+        @empire.save!
+        $explorationMessage = "Successfully explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
+        redirect_to summary_view_path(@empire.id)
+      end
     elsif params[:commit] == 'Colonize'
       @empire = Empire.find_by id: params[:id]
-      @systemToColonize = System.find_by id: params[:name][:id]
-      @systemToColonize.colonized = true
-      @systemToColonize.empire_id = @empire.id
-      @systemToColonize.save!
-      $colonizationMessage = "Successfully colonized #{@systemToColonize.name} / System ID: #{@systemToColonize.id}."
-      redirect_to summary_view_path(@empire.id)
+      if @empire.food < 200
+        $colonizationMessage = "Not enough food for your future colonists. A new colony requires 200 food."
+        redirect_to summary_view_path(@empire.id)
+      else
+        @systemToColonize = System.find_by id: params[:name][:id]
+        @systemToColonize.colonized = true
+        @systemToColonize.empire_id = @empire.id
+        @systemToColonize.save!
+        @empire.food -= 200
+        @empire.save!
+        $colonizationMessage = "Successfully colonized #{@systemToColonize.name} / System ID: #{@systemToColonize.id}."
+        redirect_to summary_view_path(@empire.id)
+      end
     end
   end
 

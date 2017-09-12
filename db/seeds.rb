@@ -12,6 +12,7 @@ User.create!({
 
 # Creates one default empire than belongs to admin or the first created user
 Empire.where(name: "default empire", description: "Default Empire.", user_id: 1).first_or_create!
+Empire.where(name: "test empire 1", description: "Test Empire.", user_id: 1).first_or_create!
 
 # Creates one default EmpireTrait
 EmpireTrait.where(name: "default trait", description: "Default trait that does nothing.").first_or_create!
