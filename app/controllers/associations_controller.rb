@@ -38,6 +38,7 @@ class AssociationsController < ApplicationController
       @unexploredSystemsArray = System.where(:explored => [false]).all
       @randomSystem = @unexploredSystemsArray.sample
       @randomSystem.explored = true
+      @randomSystem.empire_id = @empire.id
       @randomSystem.save!
       $explorationMessage = "Successfuly explored #{@randomSystem.name} / System ID: #{@randomSystem.id}."
       redirect_to summary_view_path(@empire.id)
@@ -45,6 +46,7 @@ class AssociationsController < ApplicationController
       @empire = Empire.find_by id: params[:id]
       @systemToColonize = System.find_by id: params[:name][:id]
       @systemToColonize.colonized = true
+      @systemToColonize.empire_id = @empire.id
       @systemToColonize.save!
       redirect_to summary_view_path(@empire.id)
     end
