@@ -42,3 +42,15 @@
       <%= submit_tag 'Colonize' %>
     </div>
 </div>
+
+<h3>Research a new technology:</h3>
+<div class="research-container">
+  <% if $researchMessage != nil %>
+    <%= "*** #{$researchMessage} ***" %>
+  <% end %>
+  <%= form_tag update_empire_path %>
+    <div class="research-dropdown">
+      <%= collection_select :name, :id, Technology.all, :id, :name %>
+      <%= submit_tag 'Research' %>
+    </div>
+</div>

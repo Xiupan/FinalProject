@@ -19,6 +19,7 @@ class AssociationsController < ApplicationController
   def updateEmpire
     $explorationMessage = nil
     $colonizationMessage = nil
+    $researchMessage = nil
     if params[:commit] == 'Add 100 Money'
       @empire = Empire.find_by id: params[:id]
       @empire.money += 100
@@ -63,6 +64,18 @@ class AssociationsController < ApplicationController
         @empire.food -= 200
         @empire.save!
         $colonizationMessage = "Successfully colonized #{@systemToColonize.name} / System ID: #{@systemToColonize.id}."
+        redirect_to summary_view_path(@empire.id)
+      end
+    elsif params[:commit] == 'Research'
+      @empire = Empire.find_by id: params[:id]
+      @techToResearch = Technology.find_by id: params[:name][:id]
+      if @techToResearch.base_time > @empire.science
+        $researchMessage = "Unable to research. Not enough science. #{@techToResearch.name} costs #{@techToResearch.base_time} science."
+        redirect_to summary_view_path(@empire.id)
+      else
+        @empire.science -= @techToResearch.base_time
+        @empire.save!
+        $researchMessage = "Successfully researched #{@techToResearch.name} / Tech ID: #{@techToResearch.id}."
         redirect_to summary_view_path(@empire.id)
       end
     end
