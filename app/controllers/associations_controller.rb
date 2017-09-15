@@ -53,11 +53,11 @@ class AssociationsController < ApplicationController
       end
     elsif params[:commit] == 'Colonize'
       @empire = Empire.find_by id: params[:id]
+      @systemToColonize = System.find_by id: params[:system][:id]
       if @empire.food < 200
-        $colonizationMessage = "Not enough food for your future colonists. A new colony requires 200 food."
+        $colonizationMessage = "Not enough food for your future colonists. Colonizing #{@systemToColonize.name} requires 200 food."
         redirect_to summary_view_path(@empire.id)
       else
-        @systemToColonize = System.find_by id: params[:name][:id]
         @systemToColonize.colonized = true
         @systemToColonize.empire_id = @empire.id
         @systemToColonize.save!
@@ -68,7 +68,7 @@ class AssociationsController < ApplicationController
       end
     elsif params[:commit] == 'Research'
       @empire = Empire.find_by id: params[:id]
-      @techToResearch = Technology.find_by id: params[:name][:id]
+      @techToResearch = Technology.find_by id: params[:technology][:id]
       if @techToResearch.base_time > @empire.science
         $researchMessage = "Unable to research. Not enough science. #{@techToResearch.name} costs #{@techToResearch.base_time} science."
         redirect_to summary_view_path(@empire.id)

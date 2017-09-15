@@ -10,6 +10,12 @@ User.create!({
   password_confirmation: "poop"
 })
 
+User.create!({
+  username: "test1",
+  password: "poop",
+  password_confirmation: "poop"
+})
+
 # Creates one default empire than belongs to admin or the first created user
 Empire.where(name: "default empire", description: "Default Empire.", user_id: 1).first_or_create!
 Empire.where(name: "test empire 1", description: "Test Empire.", user_id: 1).first_or_create!
