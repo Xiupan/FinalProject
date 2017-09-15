@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'summary/:id' => 'summaries#index', as: :summary_view
   post 'summary/:id' => 'associations#updateEmpire', as: :update_empire
 
+  resources :empires do
+    resources :systems
+  end
+
   get 'sessions/new' => 'sessions#new', as: :login
   post 'sessions/new' => 'sessions#create'
   delete 'sessions' => 'sessions#destroy', as: :logout

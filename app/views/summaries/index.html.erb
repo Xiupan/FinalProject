@@ -54,3 +54,12 @@
       <%= submit_tag 'Research' %>
     </div>
 </div>
+
+<h3>Manage a colony:</h3>
+<div class="manage-colony-container">
+  <%= form_tag update_empire_path %>
+    <div class="manage-colony-dropdown">
+      <%= collection_select :colony, :id, System.where(:colonized => [true]).all, :id, :name %>
+      <%= submit_tag 'Manage Colony' %>
+    </div>
+</div>

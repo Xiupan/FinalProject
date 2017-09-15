@@ -78,6 +78,10 @@ class AssociationsController < ApplicationController
         $researchMessage = "Successfully researched #{@techToResearch.name} / Tech ID: #{@techToResearch.id}."
         redirect_to summary_view_path(@empire.id)
       end
+    elsif params[:commit] == 'Manage Colony'
+      @empire = Empire.find_by id: params[:id]
+      @system = System.find_by id: params[:colony][:id]
+      redirect_to empire_system_path(@empire.id, @system.id)
     end
   end
 
